@@ -4,6 +4,10 @@ import EditExercise from "./components/edit-exercises.component";
 import CreateExercise from "./components/create-exercises.component";
 import CreateUser from "./components/create-user.component";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import React  from 'react';
+import './main.css';
+
+
 function App() {
   return (
     <div className="App">

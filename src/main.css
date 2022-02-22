@@ -1,0 +1,30 @@
+.navigation{
+    background-color: brown;
+    justify-content: space-between;
+}
+.navigation a{
+    text-decoration: none;
+    color: white;
+}
+.navigation a:hover{
+    color: red;
+}
+.navigation img{
+    width: 75px;
+}
+.navigation p{
+    margin-top: 20px;
+}
+.navigation_sub img{
+    margin-left: 10px;
+}
+.navigation_sub p{
+    margin-left: 10px;
+
+}
+.navigation p{
+    font-size: 20px;
+}
+.login{
+    margin-right: 30px;
+}
