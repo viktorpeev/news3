@@ -18,12 +18,26 @@ mongoose.connect(uri,
         console.log("MongoDB database connection established successfully");
     })
 
-const exercisesRouter = require('./routes/exercises');
+const newsRouter = require('./routes/news');
 const usersRouter = require('./routes/users');
 
-app.use('/exercises', exercisesRouter);
+app.use('/news', newsRouter);
 app.use('/users', usersRouter);
 
+app.post("/login",(req,res)=>{
+    const {email,password} =req.body;
+    User.findone({email:email},(err,user)=>{
+        if(user){
+           if(password === user.password){
+               res.send({message:"login sucess",user:user})
+           }else{
+               res.send({message:"wrong credentials"})
+           }
+        }else{
+            res.send("not register")
+        }
+    })
+});
 
 app.listen(port, () => {
         console.log(`Server is running on port: ${port}`);

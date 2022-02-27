@@ -24,10 +24,13 @@ export default class Navbar extends Component {
       <div className="d-flex navigation">
         <div className="d-flex navigation_sub">
           <Link to="/"><img src={logo}></img></Link>
-          <Link to="/"><p>Special Reports</p></Link>
-          <Link to="/"><p>About Us</p></Link>
+          <Link className="nav_link" to="/"><p>About Us</p></Link>
         </div>
-        <Link className="login" to="/"><p>Log in</p></Link>
+        <div className="d-flex">
+        <Link className="nav_link login" to="/register"><p>Register</p></Link>
+        <Link className="nav_link login" to="/login"><p>Log in</p></Link>
+        </div>
+        
       </div>
     );
   }

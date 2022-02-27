@@ -1,8 +1,11 @@
 import Navbar from "./components/navbar.component";
-import ExercisesList from "./components/exercises-list.component";
-import EditExercise from "./components/edit-exercises.component";
-import CreateExercise from "./components/create-exercises.component";
-import CreateUser from "./components/create-user.component";
+import NewsList from "./components/news-list.component";
+import EditNews from "./components/edit-news.component";
+import ShowNews from "./components/single-news.component";
+import CreateNews from "./components/create-news.component";
+import CreateUser from "./components/register.component";
+import NewsListUserView from "./components/news-list-user-view.component";
+import Login from "./components/login.component";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React  from 'react';
 import './main.css';
@@ -13,11 +16,13 @@ function App() {
     <div className="App">
      <Router>
        <Navbar/>
-       <br/>
-       <Route path="/" exact component={ExercisesList}/>
-       <Route path="/edit/:id" exact component={EditExercise}/>
-       <Route path="/create" exact component={CreateExercise}/>
-       <Route path="/user" exact component={CreateUser}/>
+       <Route path="/" exact component={NewsListUserView}/>
+       <Route path="/admin" exact component={NewsList}/>
+       <Route path="/edit/:id" exact component={EditNews}/>
+       <Route path="/news/:id" exact component={ShowNews}/>
+       <Route path="/create" exact component={CreateNews}/>
+       <Route path="/register" exact component={CreateUser}/>
+       <Route path="/login"><Login setLoginUser={setLoginUser}/></Route>
      </Router>
     </div>
   );

@@ -6,11 +6,12 @@
     text-decoration: none;
     color: white;
 }
-.navigation a:hover{
-    color: red;
+.nav_link:hover{
+    opacity: 0.5;
 }
 .navigation img{
     width: 75px;
+
 }
 .navigation p{
     margin-top: 20px;
@@ -27,4 +28,38 @@
 }
 .login{
     margin-right: 30px;
+}
+.card
+{
+    width:500px;
+}
+.card img
+{
+    width:500px;
+    height: 300px;
+}
+.homepage{
+    display: flex;
+    flex-grow: 3;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 9vw;
+}
+.center{
+    justify-content: center;
+}
+.single_page img{
+    height: 600px;
+    width: 960px;
+    
+}
+.single_description p{
+    width: 960px;
+}
+.single_description h1{
+    width: 960px;
+}
+a{
+    text-decoration: none !important;
+    color: black !important;
 }

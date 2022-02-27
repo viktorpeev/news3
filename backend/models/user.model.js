@@ -10,6 +10,8 @@ const userSchema = new Schema({
         trim:true, //removes whitespace
         minlength:3
     },
+    password: { type: String, required: true },
+
 },    {
         timestamps:true,
 });
