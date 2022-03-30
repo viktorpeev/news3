@@ -3,17 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const News = props => (
-//   <tr>
-//     <td>{props.news.title}</td>
-//     <td>{props.news.description}</td>
-//     <td>{props.news.author}</td>
-//     <td>{props.news.date.substring(0,10)}</td>
-//   </tr>
 <Link to={"/news/"+props.news._id}>
 <div className="card">
         <img src={props.news.image} className="card-img-top"/>
     <div className="card-body">
-        <h2 className="card-text">{props.news.title}</h2>
+        <p className="card-text">{props.news.title}</p>
         <div className="d-flex">
             <p className="card-text">{props.news.author}</p>
             <p className="card-text">{props.news.date.substring(0,10)}</p>
@@ -40,6 +34,7 @@ export default class NewsList extends Component {
       .catch((error) => {
         console.log(error);
       })
+     
   }
 
   deleteNews(id) {

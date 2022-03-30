@@ -1,34 +1,59 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
+import axios from 'axios';
+import cookies from 'react-cookie';
 export default class Navbar extends Component {
 
+  constructor(props) {
+    super(props);
+    this.getTodos = this.getTodos.bind(this);
+
+    this.state = {
+      name: "React"
+    };
+    this.getTodos = this.getTodos.bind(this);
+  }
+
+  async getTodos() {
+    let data = await axios
+      .get("http://localhost:5000/discussion", {withCredentials: true})
+      .then(function(response) {
+        return response;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    this.setState({ todos: data.data });
+    
+  }
+  componentDidMount(){
+    this.getTodos();
+  }
+  logout = () => {
+    const user = {
+      logout: "undefined"
+    }
+    axios.post('http://localhost:5000/logout', user,  {withCredentials: true})
+      .then(res =>{
+        window.location.reload(false);
+        });
+  }
+
   render() {
+    const { todos } = this.state;
     return (
-      // <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      //   <Link to="/" className="navbar-brand">News.bg</Link>
-      //   <div className="collpase navbar-collapse">
-      //   <ul className="navbar-nav mr-auto">
-      //     <li className="navbar-item">
-      //     <Link to="/" className="nav-link">Exercises</Link>
-      //     </li>
-      //     <li className="navbar-item">
-      //     <Link to="/create" className="nav-link">Create Exercise Log</Link>
-      //     </li>
-      //     <li className="navbar-item">
-      //     <Link to="/user" className="nav-link">Create User</Link>
-      //     </li>
-      //   </ul>
-      //   </div>
-      // </nav>
       <div className="d-flex navigation">
         <div className="d-flex navigation_sub">
           <Link to="/"><img src={logo}></img></Link>
-          <Link className="nav_link" to="/"><p>About Us</p></Link>
         </div>
         <div className="d-flex">
         <Link className="nav_link login" to="/register"><p>Register</p></Link>
-        <Link className="nav_link login" to="/login"><p>Log in</p></Link>
+        {todos == 'undefined' ? (
+          <Link className="nav_link login" to="/login"><p>Login</p></Link>
+        ):(
+          <button className="nav_link login" onClick={() => { this.logout() }}><p>Logout</p></button>
+        )}
         </div>
         
       </div>

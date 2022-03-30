@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateUser extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
 

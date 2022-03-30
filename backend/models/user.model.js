@@ -3,19 +3,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        trim:true, //removes whitespace
-        minlength:3
-    },
-    password: { type: String, required: true },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    minlength: 3
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: false,
+    trim: true,
+    minlength: 3
+  },
+  isadmin: {
+    type: String,
+    required: true,
+    unique: false,
+    trim: true,
+    minlength: 1
+  },
+}, {
+  timestamps: true,
+},
+);
 
-},    {
-        timestamps:true,
-});
-
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

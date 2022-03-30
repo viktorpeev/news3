@@ -1,6 +1,6 @@
 .navigation{
     background-color: brown;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .navigation a{
     text-decoration: none;
@@ -31,12 +31,12 @@
 }
 .card
 {
-    width:500px;
+    width:324px;
 }
 .card img
 {
-    width:500px;
-    height: 300px;
+    width:324px;
+    height: 235px;
 }
 .homepage{
     display: flex;

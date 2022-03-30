@@ -24,6 +24,16 @@ export default class NewsList extends Component {
   }
 
   componentDidMount() {
+    axios.get("http://localhost:5000/isadmin", {withCredentials: true})
+      .then(res => {
+        if(res.data != "true"){
+          this.props.history.push('/');
+        }
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
     axios.get('http://localhost:5000/news/')
       .then(response => {
         this.setState({ news: response.data })
