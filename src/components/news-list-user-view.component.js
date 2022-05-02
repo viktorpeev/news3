@@ -54,7 +54,7 @@ export default class NewsList extends Component {
 
   render() {
     return (
-      <div className="container-fluid homepage">
+      <div className="container-fluid homepage mt-5 mb-5">
         { this.newsList() }
       </div>
     )

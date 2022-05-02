@@ -107,7 +107,7 @@ export default class CreateNews extends Component {
         <div className="form-group">
           <label>Date: </label>
           <div>
-            <DatePicker
+            <DatePicker className="date"
               selected={this.state.date}
               onChange={this.onChangeDate}
             />
@@ -124,7 +124,7 @@ export default class CreateNews extends Component {
               />
         </div>
         <div className="form-group">
-          <input type="submit" value="Create News" className="btn btn-primary" />
+          <input type="submit" value="Create News" className="btn btn-primary confirm" />
         </div>
       </form>
     </div>

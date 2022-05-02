@@ -49,7 +49,7 @@ export default class Register extends Component {
   render() {
     return (
       <div>
-        <h3>Create New User</h3>
+        <h3>Register</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>
@@ -62,7 +62,7 @@ export default class Register extends Component {
           </div>
           <div className="form-group"> 
             <label>Password: </label>
-            <input  type="text"
+            <input  type="password"
                 required
                 className="form-control"
                 value={this.state.password}
@@ -70,7 +70,7 @@ export default class Register extends Component {
                 />
           </div>
           <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
+          <button  value="Login" className="btn btn-primary loginbutton">Register</button>
           </div>
         </form>
       </div>

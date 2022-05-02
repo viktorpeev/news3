@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 var session = require('express-session');
-let User = require('C:/Users/ONSITES Bulgaria/mern-exercise-tracker/exercises/backend/models/user.model.js');
+let User = require('../backend/models/user.model');
 
 require('dotenv').config();
 
@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({
   origin:['http://localhost:3000'],
-  methods:['GET','POST'],
+  methods:['GET','POST','DELETE'],
   credentials: true // enable set cookie
 }));
 app.use(express.json());

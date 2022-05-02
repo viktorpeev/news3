@@ -41,6 +41,7 @@ router.route('/update/:id').post((req, res) => {
         news.title = req.body.title;
         news.description = req.body.description;
         news.author = req.body.author;
+        news.image = req.body.image;
         news.date = Date.parse(req.body.date);
 
         news.save()

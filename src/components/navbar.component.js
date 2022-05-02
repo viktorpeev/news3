@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import axios from 'axios';
-import cookies from 'react-cookie';
 export default class Navbar extends Component {
 
   constructor(props) {
@@ -19,6 +18,7 @@ export default class Navbar extends Component {
     let data = await axios
       .get("http://localhost:5000/discussion", {withCredentials: true})
       .then(function(response) {
+        console.log(response);
         return response;
       })
       .catch(function(error) {
@@ -52,7 +52,10 @@ export default class Navbar extends Component {
         {todos == 'undefined' ? (
           <Link className="nav_link login" to="/login"><p>Login</p></Link>
         ):(
-          <button className="nav_link login" onClick={() => { this.logout() }}><p>Logout</p></button>
+          <div className="d-flex">
+          <button className="nav_link login logout" onClick={() => { this.logout() }}><p>Logout</p></button>
+          <p>Welcome, {todos}</p>
+          </div>
         )}
         </div>
         

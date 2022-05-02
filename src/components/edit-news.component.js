@@ -10,6 +10,7 @@ export default class EditNews extends Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
+    this.onChangeImage = this.onChangeImage.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -17,6 +18,7 @@ export default class EditNews extends Component {
       title: '',
       description: '',
       author: '',
+      image: '',
       date: new Date(),
       users: []
     }
@@ -29,6 +31,7 @@ export default class EditNews extends Component {
           title: response.data.title,
           description: response.data.description,
           author: response.data.author,
+          image: response.data.image,
           date: new Date(response.data.date)
         })   
       })
@@ -48,6 +51,11 @@ export default class EditNews extends Component {
         console.log(error);
       })
 
+  }
+  onChangeImage(e) {
+    this.setState({
+      image: e.target.value
+    })
   }
 
   onChangeTitle(e) {
@@ -81,6 +89,7 @@ export default class EditNews extends Component {
       title: this.state.title,
       description: this.state.description,
       author: this.state.author,
+      image: this.state.image,
       date: this.state.date
     }
 
@@ -125,9 +134,18 @@ export default class EditNews extends Component {
               />
         </div>
         <div className="form-group">
+          <label>Image</label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.image}
+              onChange={this.onChangeImage}
+              />
+        </div>
+        <div className="form-group">
           <label>Date: </label>
           <div>
-            <DatePicker
+            <DatePicker className="date"
               selected={this.state.date}
               onChange={this.onChangeDate}
             />
@@ -135,7 +153,7 @@ export default class EditNews extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Edit News" className="btn btn-primary" />
+          <input type="submit" value="Edit News" className="btn btn-primary confirm" />
         </div>
       </form>
     </div>
