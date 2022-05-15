@@ -25,6 +25,15 @@ export default class EditNews extends Component {
   }
 
   componentDidMount() {
+    axios.get("http://localhost:5000/isadmin", {withCredentials: true})
+      .then(res => {
+        if(res.data != "true"){
+          this.props.history.push('/');
+        }
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     axios.get('http://localhost:5000/news/'+this.props.match.params.id)
       .then(response => {
         this.setState({

@@ -48,7 +48,6 @@ app.post("/users/check",(req,res) =>{
             {
                 req.session.user = username;
                 res.json("true");
-                // res.json('User' + username + 'is logged in, please go to the /discussion page.');
             }
             else{
               return res.redirect("/");
@@ -66,26 +65,32 @@ app.get('/discussion', function(req, res) {
 app.get('/isadmin', function(req, res) {
   var sess = req.session;
   if(typeof sess.user === 'undefined'){
-    res.json("nema user");
+    res.json("nemauser");
   }
   else{
     const username = sess.user;
-    User.find({username})
-         .then(user =>{
-            const isadmin = user[0].isadmin;
-            if(isadmin == "1")
-            {
-                res.json("true");
-            }
-            else{
-              res.json("false");
-            }
-          });
+    if(username === 'undefined'){
+      res.json("nemauser");
+    }
+    else{
+      User.find({username})
+      .then(user =>{
+         const isadmin = user[0].isadmin;
+         if(isadmin == "1")
+         {
+             res.json("true");
+         }
+         else{
+           res.json("false");
+         }
+       })
+       .catch(err => res.status(400).json('Error: ' + err));
+    }
   }
 });
 app.post("/logout",(req,res) =>{
   var sess = req.session;
-  sess.user="undefined"
+  sess.user='undefined';
   res.json(sess.user);
 });
 
